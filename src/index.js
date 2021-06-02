@@ -1,5 +1,5 @@
 require('core-js/stable');
-require('@babel/register');
+// require('@babel/register');
 require('regenerator-runtime/runtime');
 require('dotenv').config(); // load .env variables
 
