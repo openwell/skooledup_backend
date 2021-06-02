@@ -1,14 +1,13 @@
 // Update with your config settings.
 require('dotenv').config();
 module.exports = {
-  // development
   development: {
     client: 'pg',
     connection: {
-      host: '127.0.0.1',
-      database: 'skooledup',
-      user: 'teami',
-      password: '080timi2323',
+      host: process.env.DEV_HOST,
+      database: process.env.DEV_DATABASE,
+      user: process.env.DEV_USER,
+      password: process.env.DEV_PASSWORD,
     },
     useNullAsDefault: true,
     migrations: {
