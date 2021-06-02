@@ -1,7 +1,7 @@
 import express from 'express';
 import logger from 'morgan';
 import cors from 'cors';
-const helmet = require('helmet');
+import helmet from 'helmet';
 import userRoute from './routes/auth';
 import schoolRoute from './routes/school';
 import facultyRoute from './routes/faculty';
@@ -9,7 +9,7 @@ import departmentRoute from './routes/department';
 import degreeRoute from './routes/degree';
 import courseRoute from './routes/course';
 import returnError from './middleware/errorHandler';
-
+require('dotenv').config();
 const app = express();
 
 app.use(helmet());
