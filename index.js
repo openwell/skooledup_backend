@@ -3,7 +3,8 @@ require('@babel/register');
 require('regenerator-runtime/runtime');
 require('dotenv').config(); // load .env variables
 
-const app = require('./src/app').default;
+let source = process.env.NODE_ENV == 'production' ? './build/app' : './src/app';
+const app = require(source).default;
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
