@@ -86,4 +86,3 @@ exports.down = function (knex) {
     .dropTableIfExists('faculties')
     .dropTableIfExists('schools');
 };
-// school short name

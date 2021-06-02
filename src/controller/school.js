@@ -3,11 +3,12 @@ import ErrorHandler from '../middleware/errorHandler';
 
 class User {
   static async createSchool(req, res) {
-    const { school_name, school_logo } = req.body;
+    const { school_name, school_logo, school_name_short } = req.body;
     console.log(req.body);
     let payLoad = {
       school_name: school_name,
       school_logo: school_logo || '',
+      school_name_short: school_name_short || '',
     };
     try {
       await model.createSchool(payLoad);
