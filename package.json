@@ -8,7 +8,7 @@
     "server": "nodemon --signal SIGKILL --exec babel-node ./src/index.js",
     "build": "npm run clean && npm run build-server",
     "build-server": "babel -d ./build ./src -s",
-    "start": "node ./build/index.js",
+    "start": "npm build && node ./build/index.js",
     "clean": "rm -rf build && mkdir build"
   },
   "keywords": [],
