@@ -9,7 +9,6 @@ import departmentRoute from './routes/department';
 import degreeRoute from './routes/degree';
 import courseRoute from './routes/course';
 import returnError from './middleware/errorHandler';
-require('dotenv').config();
 const app = express();
 
 app.use(helmet());
