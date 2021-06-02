@@ -1,21 +1,6 @@
 // Update with your config settings.
 require('dotenv').config();
 module.exports = {
-  development: {
-    client: 'pg',
-    connection: {
-      host: '127.0.0.1',
-      database: 'skooledup',
-      user: 'teami',
-      password: '080timi2323',
-    },
-    useNullAsDefault: true,
-    migrations: {
-      directory: './src/db/migrations',
-      tableName: 'dbmigrations',
-    },
-    seeds: { directory: './src/db/seeds' },
-  },
   production: {
     client: 'pg',
     connection: {
@@ -25,6 +10,21 @@ module.exports = {
     pool: {
       min: 2,
       max: 10,
+    },
+    useNullAsDefault: true,
+    migrations: {
+      directory: './src/db/migrations',
+      tableName: 'dbmigrations',
+    },
+    seeds: { directory: './src/db/seeds' },
+  },
+  development: {
+    client: 'pg',
+    connection: {
+      host: '127.0.0.1',
+      database: 'skooledup',
+      user: 'teami',
+      password: '080timi2323',
     },
     useNullAsDefault: true,
     migrations: {
