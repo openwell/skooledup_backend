@@ -16,7 +16,20 @@ module.exports = {
     },
     seeds: { directory: './src/db/seeds' },
   },
-
+  production: {
+    client: 'pg',
+    connection: process.env.DATABASE_URL,
+    //   connection: {
+    //     connectionString: process.env.DATABASE_URL,
+    //     ssl: true,
+    //   }
+    useNullAsDefault: true,
+    migrations: {
+      directory: './src/db/migrations',
+      tableName: 'dbmigrations',
+    },
+    seeds: { directory: './src/db/seeds' },
+  },
   staging: {
     client: 'sqlite3',
     connection: { filename: './src/db/university.db3' },
@@ -33,21 +46,5 @@ module.exports = {
     // migrations: {
     //   tableName: 'knex_migrations'
     // }
-  },
-
-  production: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user: 'username',
-      password: 'password',
-    },
-    pool: {
-      min: 2,
-      max: 10,
-    },
-    migrations: {
-      tableName: 'knex_migrations',
-    },
   },
 };
