@@ -4,12 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    
-    "server": "nodemon --signal SIGKILL --exec babel-node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon --signal SIGKILL --exec babel-node index.js",
     "build": "npm run clean && npm run build-server",
     "build-server": "babel -d ./build ./src -s",
-    "start": "node ./build/index.js",
+    "start": "node index.js",
     "clean": "rm -rf build && mkdir build"
   },
   "keywords": [],
