@@ -11,10 +11,16 @@ router.post(
   helper.verifyToken,
   controller.createFaculty
 );
-router.get('/faculty', helper.verifyToken, controller.findAllFaculties);
+router.get('/faculties', helper.verifyToken, controller.findAllFaculties);
+router.get(
+  '/facultiesBySchoolId/:id',
+  validate.params,
+  helper.verifyToken,
+  controller.findAllFacultiesBySchoolId
+);
 router.put(
   '/faculty/:id',
-  validate.faculty,
+  // validate.faculty,
   validate.params,
   helper.verifyToken,
   controller.updateFacultyById

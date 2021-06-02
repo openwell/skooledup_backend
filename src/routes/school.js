@@ -11,7 +11,7 @@ router.post(
   helper.verifyToken,
   controller.createSchool
 );
-router.get('/school', helper.verifyToken, controller.findAllSchool);
+router.get('/schools', helper.verifyToken, controller.findAllSchool);
 router.put(
   '/school/:id',
   validate.school,

@@ -4,6 +4,7 @@ import ErrorHandler from '../middleware/errorHandler';
 class User {
   static async createSchool(req, res) {
     const { school_name, school_logo } = req.body;
+    console.log(req.body);
     let payLoad = {
       school_name: school_name,
       school_logo: school_logo || '',
@@ -17,6 +18,7 @@ class User {
         },
       });
     } catch (error) {
+      console.log(error);
       if (error.routine == '_bt_check_unique') {
         ErrorHandler(409, res, 'School name already exist');
       }

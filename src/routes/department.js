@@ -11,14 +11,24 @@ router.post(
   helper.verifyToken,
   controller.createDepartment
 );
-router.get('/department', helper.verifyToken, controller.findAllDepartment);
+router.get('/departments', helper.verifyToken, controller.findAllDepartment);
+router.get(
+  '/departmentsByFacultyId/:id',
+  validate.params,
+  helper.verifyToken,
+  controller.findAllDepartmentsByFacultyId
+);
 router.put(
   '/department/:id',
-  validate.department,
+  // validate.department,
   validate.params,
   helper.verifyToken,
   controller.updateDepartmentById
 );
-router.delete('/department/:id', helper.verifyToken, controller.deleteDepartmentById);
+router.delete(
+  '/department/:id',
+  helper.verifyToken,
+  controller.deleteDepartmentById
+);
 
 export default router;

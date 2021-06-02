@@ -2,9 +2,10 @@ import model from '../model/faculty';
 
 class User {
   static async createFaculty(req, res) {
-    const { faculty_name } = req.body;
+    const { faculty_name, school_id } = req.body;
     let payLoad = {
-      faculty_name: faculty_name,
+      faculty_name,
+      school_id,
     };
     await model.createFaculty(payLoad);
     return res.status(200).json({
@@ -21,11 +22,19 @@ class User {
       data: { message: 'success', data: rows },
     });
   }
+  static async findAllFacultiesBySchoolId(req, res) {
+    const { id } = req.params;
+    const rows = await model.getAllFacultiesBySchoolId(id);
+    return res.status(200).json({
+      status: 200,
+      data: { message: 'success', data: rows },
+    });
+  }
   static async updateFacultyById(req, res) {
     const { faculty_name } = req.body;
     const { id } = req.params;
     const rows = await model.patchFacultyById(id, {
-      faculty_name: faculty_name,
+      faculty_name,
     });
     return res.status(200).json({
       status: 200,

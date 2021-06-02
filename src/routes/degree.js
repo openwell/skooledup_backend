@@ -11,7 +11,7 @@ router.post(
   helper.verifyToken,
   controller.createDegree
 );
-router.get('/degree', helper.verifyToken, controller.findAllDegree);
+router.get('/degrees', helper.verifyToken, controller.findAllDegree);
 router.put(
   '/degree/:id',
   validate.degree,

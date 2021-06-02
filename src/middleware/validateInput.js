@@ -20,45 +20,45 @@ function paramsValidation(req, res, next) {
   return errorHandler(400, res, 'params must be an integer');
 }
 
-function validationHandlerForIntegerInput(arg, min, max) {
-  return check(arg)
-    .trim()
-    .escape()
-    .matches(/^\d*$/)
-    .withMessage('regex')
-    .isLength({ min, max })
-    .withMessage(`must be minimum of ${min} -${max} letters`)
-    .isInt()
-    .withMessage('must be an integer');
-}
+// function validationHandlerForIntegerInput(arg, min, max) {
+//   return check(arg)
+//     .trim()
+//     .escape()
+//     .matches(/^\d*$/)
+//     .withMessage('regex')
+//     .isLength({ min, max })
+//     .withMessage(`must be minimum of ${min} -${max} letters`)
+//     .isInt()
+//     .withMessage('must be an integer');
+// }
 
-function validationHandlerForStringInput(arg, min, max) {
-  return check(arg)
-    .trim()
-    .escape()
-    .customSanitizer((value) => value.replace(/\s+/g, ' '))
-    .matches(/^[a-zA-Z0-9 ,._'-]+$/i)
-    .withMessage("Special Characters not Allowed expect (.,_'-)")
-    .isLength({ min, max })
-    .withMessage(`must be minimum of ${min} -${max} letters`)
-    .isString()
-    .withMessage('must be a string');
-}
+// function validationHandlerForStringInput(arg, min, max) {
+//   return check(arg)
+//     .trim()
+//     .escape()
+//     .customSanitizer((value) => value.replace(/\s+/g, ' '))
+//     .matches(/^[a-zA-Z0-9 ,._'-]+$/i)
+//     .withMessage("Special Characters not Allowed expect (.,_'-)")
+//     .isLength({ min, max })
+//     .withMessage(`must be minimum of ${min} -${max} letters`)
+//     .isString()
+//     .withMessage('must be a string');
+// }
 
 // names
-function validationHandlerForStringInput1(arg, min, max) {
-  return check(arg)
-    .trim()
-    .matches(/^[a-zA-Z,._'-]+$/i)
-    .withMessage(
-      "WhiteSpace, Integer and Special Characters not Allowed expect (.,_'-)"
-    )
-    .isLength({ min, max })
-    .withMessage(`must be minimum of ${min} -${max} letters`)
-    .isString()
-    .escape()
-    .withMessage('must be a string');
-}
+// function validationHandlerForStringInput1(arg, min, max) {
+//   return check(arg)
+//     .trim()
+//     .matches(/^[a-zA-Z,._'-]+$/i)
+//     .withMessage(
+//       "WhiteSpace, Integer and Special Characters not Allowed expect (.,_'-)"
+//     )
+//     .isLength({ min, max })
+//     .withMessage(`must be minimum of ${min} -${max} letters`)
+//     .isString()
+//     .escape()
+//     .withMessage('must be a string');
+// }
 
 function validationHandlerForPassword(arg) {
   return check(arg)
@@ -81,30 +81,30 @@ function validationHandlerForPassword(arg) {
   // .withMessage("Passwords don't match.");
 }
 
-function validateHappeningOn(arg) {
-  return check(arg)
-    .custom((value, { req }) => {
-      const inputDate = Date.parse(value);
-      if (!Number(inputDate)) {
-        return false;
-      }
-      return value;
-    })
-    .withMessage(
-      'happeningOn requires Date/time in this format (yyyy:mm:dd hh:mm:ss)'
-    )
-    .custom((value, { req }) => {
-      const inputDate = Date.parse(value);
-      const currentDate = Date.now();
-      if (currentDate > inputDate) {
-        return false;
-      }
-      return value;
-    })
-    .withMessage(
-      'happeningOn requires future Date/time in this format (yyyy:mm:dd hh:mm:ss)'
-    );
-}
+// function validateHappeningOn(arg) {
+//   return check(arg)
+//     .custom((value, { req }) => {
+//       const inputDate = Date.parse(value);
+//       if (!Number(inputDate)) {
+//         return false;
+//       }
+//       return value;
+//     })
+//     .withMessage(
+//       'happeningOn requires Date/time in this format (yyyy:mm:dd hh:mm:ss)'
+//     )
+//     .custom((value, { req }) => {
+//       const inputDate = Date.parse(value);
+//       const currentDate = Date.now();
+//       if (currentDate > inputDate) {
+//         return false;
+//       }
+//       return value;
+//     })
+//     .withMessage(
+//       'happeningOn requires future Date/time in this format (yyyy:mm:dd hh:mm:ss)'
+//     );
+// }
 
 const middleware = {
   login: [
@@ -140,8 +140,8 @@ const middleware = {
       .trim()
       .escape()
       .isString()
-      .isLength({ min: 10 })
-      .withMessage('must be at least 10 chars long'),
+      .isLength({ min: 5 })
+      .withMessage('must be at least 5 chars long'),
     validatorFunction,
   ],
   degree: [
@@ -149,9 +149,8 @@ const middleware = {
       .trim()
       .escape()
       .isString()
-      .isLength({ min: 10 })
-      .withMessage('must be at least 10 chars long'),
-    check('school_id').isInt().withMessage('must be an integer'),
+      .isLength({ min: 5 })
+      .withMessage('must be at least 5 chars long'),
     validatorFunction,
   ],
   faculty: [
@@ -160,28 +159,30 @@ const middleware = {
       .escape()
       .isString()
       .isLength({ min: 5 })
-      .withMessage('must be at least 10 chars long'),
-    check('degree_id').isInt().withMessage('must be an integer'),
+      .withMessage('must be at least 5 chars long'),
+    check('school_id').isInt().withMessage('must be an integer'),
     validatorFunction,
   ],
   department: [
-    check('school_name')
+    check('department_name')
       .trim()
       .escape()
       .isString()
       .isLength({ min: 5 })
-      .withMessage('must be at least 10 chars long'),
+      .withMessage('must be at least 5 chars long'),
     check('faculty_id').isInt().withMessage('must be an integer'),
     validatorFunction,
   ],
   course: [
-    check('school_name')
+    check('course_name')
       .trim()
       .escape()
       .isString()
       .isLength({ min: 5 })
-      .withMessage('must be at least 10 chars long'),
+      .withMessage('must be at least 5 chars long'),
+    //others
     check('department_id').isInt().withMessage('must be an integer'),
+    check('degree_id').isInt().withMessage('must be an integer'),
     validatorFunction,
   ],
   params: [paramsValidation],

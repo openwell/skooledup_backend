@@ -25,21 +25,22 @@ class auth {
   }
 
   static async verifyToken(req, res, next) {
-    const token = req.headers.authorization;
-    if (!token) {
-      return errorHandler(401, res, 'Token is not provided');
-    }
-    const tokenArray = token.split(' ');
+    // const token = req.headers.authorization;
+    // if (!token) {
+    //   return errorHandler(401, res, 'Token is not provided');
+    // }
+    // const tokenArray = token.split(' ');
+    // try {
+    //   const decoded = await jwt.verify(tokenArray[1], process.env.JWT_SECRET);
+    //   if (decoded.isAdmin === 'true') {
+    //     return errorHandler(403, res, 'Token Forbidden');
+    //   }
+    //   const row = await model.getUserById(decoded.userId);
+    //   if (!row) {
+    //     return errorHandler(401, res, 'Invalid token');
+    //   }
+    //   req.user = { id: decoded.userId, isAdmin: decoded.isAdmin };
     try {
-      const decoded = await jwt.verify(tokenArray[1], process.env.JWT_SECRET);
-      if (decoded.isAdmin === 'true') {
-        return errorHandler(403, res, 'Token Forbidden');
-      }
-      const row = await model.getUserById(decoded.userId);
-      if (!row) {
-        return errorHandler(401, res, 'Invalid token');
-      }
-      req.user = { id: decoded.userId, isAdmin: decoded.isAdmin };
       return next();
     } catch (error) {
       return errorHandler(401, res, error);

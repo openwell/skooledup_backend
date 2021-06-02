@@ -6,7 +6,7 @@ exports.seed = function (knex) {
       // Inserts seed entries
       return knex('courses').insert([
         {
-          id: 1,
+          // id: 1,
           course_name: 'Undergraduate',
           department_id: 1,
           degree_id: 1,

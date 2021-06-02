@@ -2,12 +2,11 @@ import model from '../model/degree';
 
 class User {
   static async createDegree(req, res) {
-    // const { school_name, school_logo } = req.body;
-    // let payLoad = {
-    //   school_name: school_name,
-    //   school_logo: school_logo || '',
-    // };
-    // await model.createDegree(payLoad);
+    const { degree_name } = req.body;
+    let payLoad = {
+      degree_name,
+    };
+    await model.createDegree(payLoad);
     return res.status(200).json({
       status: 200,
       data: {
@@ -23,10 +22,10 @@ class User {
     });
   }
   static async updateDegreeById(req, res) {
-    // const { school_name } = req.body;
-    // const { id } = req.params;
-    // const rows = await model.patchSchoolById(id, { school_name: school_name });
-    // console.log(rows);
+    const { degree_name } = req.body;
+    const { id } = req.params;
+    const rows = await model.patchDegreeById(id, { degree_name });
+    console.log(rows);
     return res.status(200).json({
       status: 200,
       data: {

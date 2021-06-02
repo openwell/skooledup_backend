@@ -6,6 +6,7 @@ module.exports = {
   getAllFaculties,
   deleteFacultyById,
   patchFacultyById,
+  getAllFacultiesBySchoolId,
 };
 
 // FACULTY
@@ -16,7 +17,23 @@ function getFacultyById(id) {
   return db('faculties').where({ id }).first();
 }
 function getAllFaculties() {
-  return db('faculties');
+  return db('faculties')
+    .join('schools', 'schools.id', '=', 'faculties.school_id')
+    .select(
+      'faculties.id as id',
+      'faculties.faculty_name as faculty',
+      'schools.school_name as school'
+    );
+}
+function getAllFacultiesBySchoolId(id) {
+  return db('faculties')
+    .where('school_id', id)
+    .join('schools', 'schools.id', '=', 'faculties.school_id')
+    .select(
+      'faculties.id as id',
+      'faculties.faculty_name as faculty',
+      'schools.school_name as school'
+    );
 }
 function deleteFacultyById(id) {
   return db('faculties').where({ id }).del();

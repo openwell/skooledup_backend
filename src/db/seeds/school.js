@@ -6,14 +6,29 @@ exports.seed = function (knex) {
       // Inserts seed entries
       return knex('schools').insert([
         {
-          id: 1,
           school_name: 'Tshwane University of Technology',
           school_logo: '',
         },
-        { id: 2, school_name: 'University of Johannesburg', school_logo: '' },
-        { id: 3, school_name: 'University of South Africa', school_logo: '' },
-        { id: 4, school_name: 'University of Pretoria', school_logo: '' },
-        { id: 5, school_name: 'University of Witswatersrand', school_logo: '' },
+        {
+          // id: 2,
+          school_name: 'University of Johannesburg',
+          school_logo: '',
+        },
+        {
+          // id: 3,
+          school_name: 'University of South Africa',
+          school_logo: '',
+        },
+        {
+          // id: 4,
+          school_name: 'University of Pretoria',
+          school_logo: '',
+        },
+        {
+          //  id: 5,
+          school_name: 'University of Witswatersrand',
+          school_logo: '',
+        },
       ]);
     });
 };
