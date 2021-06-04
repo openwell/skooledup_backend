@@ -21,6 +21,7 @@ class User {
       min_req_local_aps,
       min_req_local_eng,
       min_req_local_add_lang,
+      min_req_local_add_physics,
       min_req_local_math,
       min_req_international,
       online_classes,
@@ -51,6 +52,7 @@ class User {
       min_req_local_english: min_req_local_eng || '',
       min_req_local_additional_lang: min_req_local_add_lang || '',
       min_req_local_mathematics: min_req_local_math || '',
+      min_req_local_physics: min_req_local_add_physics || '',
       min_req_international: min_req_international || '',
       online_classes: online_classes || '',
       //   dates

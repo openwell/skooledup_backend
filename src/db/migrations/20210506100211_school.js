@@ -68,6 +68,7 @@ exports.up = function (knex) {
       tbl.string('min_req_local_english', 255);
       tbl.string('min_req_local_additional_lang', 255);
       tbl.string('min_req_local_mathematics', 255);
+      tbl.string('min_req_local_physics', 255);
       tbl.text('min_req_international');
       tbl.date('application_opening_date');
       tbl.date('application_closing_date');
