@@ -1,22 +1,22 @@
 // Update with your config settings.
 require('dotenv').config();
 module.exports = {
-  // development: {
-  //   client: 'pg',
-  //   connection: {
-  //     host: process.env.DEV_HOST,
-  //     database: process.env.DEV_DATABASE,
-  //     user: process.env.DEV_USER,
-  //     password: process.env.DEV_PASSWORD,
-  //   },
-  //   useNullAsDefault: true,
-  //   migrations: {
-  //     directory: './src/db/migrations',
-  //     tableName: 'dbmigrations',
-  //   },
-  //   seeds: { directory: './src/db/seeds' },
-  // },
   development: {
+    client: 'pg',
+    connection: {
+      host: process.env.DEV_HOST,
+      database: process.env.DEV_DATABASE,
+      user: process.env.DEV_USER,
+      password: process.env.DEV_PASSWORD,
+    },
+    useNullAsDefault: true,
+    migrations: {
+      directory: './src/db/migrations',
+      tableName: 'dbmigrations',
+    },
+    seeds: { directory: './src/db/seeds' },
+  },
+  production: {
     client: 'pg',
     connection: {
       connectionString: process.env.DATABASE_URL,
