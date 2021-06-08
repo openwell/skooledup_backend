@@ -16,6 +16,7 @@ module.exports = {
     },
     seeds: { directory: './src/db/seeds' },
   },
+  // development  production
   production: {
     client: 'pg',
     connection: {

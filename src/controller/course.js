@@ -56,8 +56,8 @@ class User {
       min_req_international: min_req_international || '',
       online_classes: online_classes || '',
       //   dates
-      application_opening_date: app_opening_date || '',
-      application_closing_date: app_closing_date || '',
+      application_opening_date: app_opening_date || null,
+      application_closing_date: app_closing_date || null,
       //   text
       note: note || '',
       hero_image: hero_image || '',
