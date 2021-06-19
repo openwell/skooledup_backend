@@ -88,25 +88,33 @@ class User {
       data: { message: 'success', data: rows },
     });
   }
-  static async findAllCourseByDepartDeg(req, res) {
-    const { department_id, degree_id } = req.query;
-    console.log(department_id, degree_id);
-    try {
-      const rows = await model.getAllCoursesByDepartDeg({
-        department_id,
-        degree_id,
-      });
-      return res.status(200).json({
-        status: 200,
-        data: { message: 'success', data: rows },
-      });
-    } catch (error) {
-      return res.status(500).json({
-        status: 500,
-        data: { message: 'error', error: error },
-      });
-    }
+  static async findCourseById(req, res) {
+    const { courseId } = req.params;
+    const rows = await model.getCourseById(courseId);
+    return res.status(200).json({
+      status: 200,
+      data: { message: 'success', data: rows },
+    });
   }
+  // static async findAllCourseByDepartDeg(req, res) {
+  //   const { department_id, degree_id } = req.query;
+  //   console.log(department_id, degree_id);
+  //   try {
+  //     const rows = await model.getAllCoursesByDepartDeg({
+  //       department_id,
+  //       degree_id,
+  //     });
+  //     return res.status(200).json({
+  //       status: 200,
+  //       data: { message: 'success', data: rows },
+  //     });
+  //   } catch (error) {
+  //     return res.status(500).json({
+  //       status: 500,
+  //       data: { message: 'error', error: error },
+  //     });
+  //   }
+  // }
   static async updateCourseById(req, res) {
     const { course_name } = req.body;
     const { id } = req.params;
