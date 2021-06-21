@@ -13,11 +13,11 @@ router.post(
 );
 router.get('/courses', helper.verifyToken, controller.findAllCourse);
 router.get('/course/:courseId', helper.verifyToken, controller.findCourseById);
-// router.get(
-//   '/coursesByDepartDeg',
-//   helper.verifyToken,
-//   controller.findAllCourseByDepartDeg
-// );
+router.get(
+  '/coursesByDepartDeg',
+  helper.verifyToken,
+  controller.findAllCourseByDepartDeg
+);
 router.put(
   '/course/:id',
   //   validate.course,
