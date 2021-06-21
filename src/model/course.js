@@ -45,6 +45,7 @@ function getCourseById(courseId) {
       'schools.school_logo'
     )
     .where({ 'courses.id': courseId })
+    .first()
     .join('departments', 'departments.id', '=', 'courses.department_id')
     .join('faculties', 'faculties.id', '=', 'departments.faculty_id')
     .join('schools', 'schools.id', '=', 'faculties.school_id');

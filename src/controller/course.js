@@ -116,10 +116,69 @@ class User {
   //   }
   // }
   static async updateCourseById(req, res) {
-    const { course_name } = req.body;
+    const {
+      course_name,
+      department_id,
+      degree_id,
+      // string
+      dur,
+      tui_fee_local,
+      tui_fee_int,
+      levy,
+      levy_non_african,
+      local_app_fee_online,
+      local_app_fee_paper,
+      int_app_fee_online,
+      int_app_fee_paper,
+      study_mode_full_time,
+      study_mode_part_time,
+      min_req_local_aps,
+      min_req_local_eng,
+      min_req_local_add_lang,
+      min_req_local_add_physics,
+      min_req_local_math,
+      min_req_international,
+      online_classes,
+      //   dates
+      app_opening_date,
+      app_closing_date,
+      //   text
+      note,
+      hero_image,
+    } = req.body;
+    let payLoad = {
+      course_name: course_name,
+      department_id: department_id,
+      degree_id: degree_id,
+      // string
+      duration: dur,
+      tuition_fee_local: tui_fee_local || '',
+      tuition_fee_int: tui_fee_int || '',
+      levy: levy || '',
+      levy_non_african: levy_non_african || '',
+      local_application_fee_online: local_app_fee_online || '',
+      local_application_fee_paper: local_app_fee_paper || '',
+      international_application_fee_online: int_app_fee_online || '',
+      international_application_fee_paper: int_app_fee_paper || '',
+      study_mode_full_time: study_mode_full_time || '',
+      study_mode_part_time: study_mode_part_time || '',
+      min_req_local_aps: min_req_local_aps || '',
+      min_req_local_english: min_req_local_eng || '',
+      min_req_local_additional_lang: min_req_local_add_lang || '',
+      min_req_local_mathematics: min_req_local_math || '',
+      min_req_local_physics: min_req_local_add_physics || '',
+      min_req_international: min_req_international || '',
+      online_classes: online_classes || '',
+      //   dates
+      application_opening_date: app_opening_date || null,
+      application_closing_date: app_closing_date || null,
+      //   text
+      note: note || '',
+      hero_image: hero_image || '',
+    };
     const { id } = req.params;
-    const rows = await model.patchCourseById(id, { course_name });
-    console.log(rows);
+    await model.patchCourseById(id, payLoad);
+    // console.log(rows);
     return res.status(200).json({
       status: 200,
       data: {
